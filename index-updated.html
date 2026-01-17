@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brofessional Store | Keep it Pro. Keep it Bro.</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.brofessional.store/">
+    <meta property="og:title" content="Brofessional">
+    <meta property="og:description" content="Brofessional The Shirt">
+    <meta property="og:image" content="regpreview.png">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.brofessional.store/">
+    <meta property="twitter:title" content="Brofessional">
+    <meta property="twitter:description" content="Brofessional Store">
+    <meta property="twitter:image" content="regpreview.png">
+
+    <!-- Apple-specific -->
+    <meta name="apple-mobile-web-app-title" content="Brofessional">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+    <style>
+        :root {
+            --dark-brown: #1a1613;
+            --light-brown: #3d3229;
+            --cream: #f5f0e8;
+            --gold: #d4a853;
+            --gold-light: #e8c078;
+            --white: #ffffff;
+            --black: #000000;
+            --gradient-dark: linear-gradient(135deg, #1a1613 0%, #3d3229 50%, #1a1613 100%);
+            --gradient-gold: linear-gradient(135deg, #d4a853 0%, #e8c078 50%, #d4a853 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-animation {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: var(--gradient-dark);
+        }
+
+        .bg-animation::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(212, 168, 83, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(212, 168, 83, 0.08) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(26, 22, 19, 0.8);
+        }
+
+        .nav.scrolled {
+            padding: 0.5rem 2rem;
+            background: rgba(26, 22, 19, 0.95);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-logo {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--cream);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            padding: 6rem 2rem 4rem;
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-logo {
+            max-width: 300px;
+            margin-bottom: 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        .hero h1 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            letter-spacing: 8px;
+            margin-bottom: 1rem;
+            background: var(--gradient-gold);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: none;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gradient-gold);
+            color: var(--dark-brown);
+            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(212, 168, 83, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--cream);
+            border: 2px solid var(--cream);
+        }
+
+        .btn-secondary:hover {
+            background: var(--cream);
+            color: var(--dark-brown);
+            transform: translateY(-3px);
+        }
+
+        /* Scroll indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: var(--gold);
+            opacity: 0.7;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, transparent 0%, rgba(61, 50, 41, 0.3) 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2.5rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            border: 1px solid rgba(212, 168, 83, 0.1);
+            position: relative;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(212, 168, 83, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .product-card.featured {
+            border-color: var(--gold);
+        }
+
+        .product-card.featured::before {
+            content: 'BESTSELLER';
+            position: absolute;
+            top: 20px;
+            right: -35px;
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 0.5rem 3rem;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transform: rotate(45deg);
+            z-index: 10;
+        }
+
+        .product-image {
+            position: relative;
+            padding: 2rem;
+            background: linear-gradient(180deg, rgba(212, 168, 83, 0.05) 0%, transparent 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 300px;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 250px;
+            object-fit: contain;
+            transition: transform 0.4s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 2rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--cream);
+        }
+
+        .product-info .description {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+        }
+
+        .price {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .price .original {
+            font-size: 1.2rem;
+            text-decoration: line-through;
+            opacity: 0.5;
+            margin-right: 0.5rem;
+        }
+
+        .add-to-cart {
+            background: var(--gradient-gold);
+            color: var(--dark-brown);
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-cart:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(212, 168, 83, 0.4);
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 2rem;
+            background: var(--dark-brown);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(212, 168, 83, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            border: 2px solid rgba(212, 168, 83, 0.3);
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--gold);
+        }
+
+        .feature-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.75rem;
+            color: var(--cream);
+        }
+
+        .feature-card p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 2rem;
+            background: linear-gradient(180deg, var(--dark-brown) 0%, var(--light-brown) 100%);
+        }
+
+        .testimonial-slider {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .testimonial-card {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 20px;
+            padding: 3rem;
+            text-align: center;
+            border: 1px solid rgba(212, 168, 83, 0.2);
+        }
+
+        .testimonial-card .quote {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-style: italic;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .testimonial-card .quote::before {
+            content: '"';
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 6rem;
+            color: var(--gold);
+            position: absolute;
+            top: -40px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0.3;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .testimonial-author img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gold);
+        }
+
+        .author-info h4 {
+            color: var(--gold);
+            font-size: 1.1rem;
+        }
+
+        .author-info p {
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        .stars {
+            color: var(--gold);
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        /* Stats */
+        .stats {
+            padding: 4rem 2rem;
+            background: var(--dark-brown);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .stat-item h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            opacity: 0.7;
+        }
+
+        /* Newsletter */
+        .newsletter {
+            padding: 6rem 2rem;
+            background: linear-gradient(135deg, var(--light-brown) 0%, var(--dark-brown) 100%);
+            text-align: center;
+        }
+
+        .newsletter h2 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2.5rem;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .newsletter p {
+            margin-bottom: 2rem;
+            opacity: 0.8;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            min-width: 250px;
+            padding: 1rem 1.5rem;
+            border: 2px solid rgba(212, 168, 83, 0.3);
+            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.2);
+            color: var(--cream);
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .newsletter-form input::placeholder {
+            color: rgba(245, 240, 232, 0.5);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--gold);
+        }
+
+        /* Footer */
+        footer {
+            padding: 4rem 2rem 2rem;
+            background: var(--black);
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.3rem;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-section ul a {
+            color: var(--cream);
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+
+        .footer-section ul a:hover {
+            opacity: 1;
+            color: var(--gold);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: rgba(212, 168, 83, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gold);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(212, 168, 83, 0.3);
+        }
+
+        .social-links a:hover {
+            background: var(--gold);
+            color: var(--dark-brown);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(212, 168, 83, 0.2);
+        }
+
+        .footer-bottom p {
+            opacity: 0.6;
+            font-size: 0.9rem;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--dark-brown);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1.5rem;
+                text-align: center;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                letter-spacing: 4px;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+                letter-spacing: 2px;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 280px;
+                justify-content: center;
+            }
+
+            .product-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header h2 {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations on scroll */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--dark-brown);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--gold-light);
+        }
+
+        /* Easter Egg Modal */
+        .easter-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .easter-modal.active {
+            display: flex;
+        }
+
+        .easter-content {
+            background: var(--dark-brown);
+            border: 2px solid var(--gold);
+            border-radius: 20px;
+            padding: 2.5rem;
+            max-width: 450px;
+            text-align: center;
+            position: relative;
+            animation: modalPop 0.3s ease;
+        }
+
+        @keyframes modalPop {
+            from {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+        }
+
+        .easter-content .close-btn {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: var(--cream);
+            font-size: 1.5rem;
+            cursor: pointer;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .easter-content .close-btn:hover {
+            opacity: 1;
+        }
+
+        .easter-content .emoji {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+        }
+
+        .easter-content h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.8rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            letter-spacing: 2px;
+        }
+
+        .easter-content p {
+            line-height: 1.7;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        .easter-content .btn-gold {
+            background: var(--gradient-gold);
+            color: var(--dark-brown);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .easter-content .btn-gold:hover {
+            transform: scale(1.05);
+        }
+
+        /* Size guide specific */
+        .size-chart {
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .size-chart table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .size-chart th, .size-chart td {
+            padding: 0.5rem;
+            border: 1px solid rgba(212, 168, 83, 0.3);
+        }
+
+        .size-chart th {
+            background: rgba(212, 168, 83, 0.2);
+            color: var(--gold);
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-animation"></div>
+
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <a href="#" class="nav-logo">BROFESSIONAL</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Shop</a></li>
+            <li><a href="#features">Why Us</a></li>
+            <li><a href="#testimonials">Reviews</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button class="mobile-menu-btn" id="mobileMenuBtn">
+            <i class="fas fa-bars"></i>
+        </button>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="logo.png" alt="Brofessional Logo" class="hero-logo">
+            <h1>BROFESSIONAL</h1>
+            <p class="tagline">Keep it Pro. Keep it Bro.</p>
+            <div class="hero-cta">
+                <a href="https://www.amazon.com/dp/B0DFLVF23B?customId=B07536XX75&customizationToken=MC_Assembly_1%23B07536XX75&th=1&psc=1" class="btn btn-primary">
+                    <i class="fas fa-shopping-bag"></i> Shop Now
+                </a>
+                <a href="#products" class="btn btn-secondary">
+                    <i class="fas fa-eye"></i> View Collection
+                </a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="section-header fade-in">
+            <h2>THE COLLECTION</h2>
+            <p>Premium quality apparel for the modern bro who keeps it professional</p>
+        </div>
+        <div class="product-grid">
+            <div class="product-card featured fade-in">
+                <div class="product-image">
+                    <img src="regpreview.png" alt="The Original Brofessional">
+                </div>
+                <div class="product-info">
+                    <h3>The Original Brofessional</h3>
+                    <p class="description">The shirt that started it all. Premium cotton blend, perfect fit, maximum bro energy.</p>
+                    <div class="product-meta">
+                        <span class="price">$24.99</span>
+                        <a href="https://www.amazon.com/dp/B0DFLVF23B?customId=B07536XX75&customizationToken=MC_Assembly_1%23B07536XX75&th=1&psc=1" class="add-to-cart">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="regpreview.png" alt="Brofessional Premium">
+                </div>
+                <div class="product-info">
+                    <h3>Brofessional Premium</h3>
+                    <p class="description">Elevated style for the discerning bro. Luxury fabric, refined design.</p>
+                    <div class="product-meta">
+                        <span class="price"><span class="original">$39.99</span>$29.99</span>
+                        <button class="add-to-cart" disabled style="opacity: 0.5;">
+                            <i class="fas fa-clock"></i> Coming Soon
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="product-card fade-in">
+                <div class="product-image">
+                    <img src="regpreview.png" alt="Brofessional Limited">
+                </div>
+                <div class="product-info">
+                    <h3>Brofessional Limited</h3>
+                    <p class="description">Exclusive limited edition. Only 500 made. For the legendary bros.</p>
+                    <div class="product-meta">
+                        <span class="price">$49.99</span>
+                        <button class="add-to-cart" disabled style="opacity: 0.5;">
+                            <i class="fas fa-clock"></i> Coming Soon
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="section-header fade-in">
+            <h2>WHY BROFESSIONAL?</h2>
+            <p>We're not just selling shirts. We're selling a lifestyle.</p>
+        </div>
+        <div class="features-grid">
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-medal"></i>
+                </div>
+                <h3>Premium Quality</h3>
+                <p>100% premium cotton blend that's soft, durable, and gets better with every wash.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <h3>Perfect Fit</h3>
+                <p>Designed to look great whether you're crushing it at the gym or the office.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3>Fast Shipping</h3>
+                <p>Amazon Prime delivery gets your brofessional gear to you in record time.</p>
+            </div>
+            <div class="feature-card fade-in">
+                <div class="feature-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h3>Bro Approved</h3>
+                <p>Thousands of bros worldwide trust Brofessional for their daily swagger.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stats-grid fade-in">
+            <div class="stat-item">
+                <h3>10K+</h3>
+                <p>Happy Bros</p>
+            </div>
+            <div class="stat-item">
+                <h3>4.9</h3>
+                <p>Star Rating</p>
+            </div>
+            <div class="stat-item">
+                <h3>50+</h3>
+                <p>Countries</p>
+            </div>
+            <div class="stat-item">
+                <h3>100%</h3>
+                <p>Bro Energy</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="testimonials">
+        <div class="section-header fade-in">
+            <h2>WHAT BROS SAY</h2>
+            <p>Real reviews from real brofessionals</p>
+        </div>
+        <div class="testimonial-slider fade-in">
+            <div class="testimonial-card">
+                <div class="stars">
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                    <i class="fas fa-star"></i>
+                </div>
+                <p class="quote">Finally, a shirt that understands the bro lifestyle. Professional enough for the boardroom, bro enough for the bar. My whole squad is now rocking Brofessional.</p>
+                <div class="testimonial-author">
+                    <div class="author-info">
+                        <h4>Chad M.</h4>
+                        <p>Verified Brofessional</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter" id="newsletter">
+        <h2>JOIN THE BRO-HOOD</h2>
+        <p>Get exclusive drops, bro tips, and early access to new releases.</p>
+        <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Welcome to the bro-hood!');">
+            <input type="email" placeholder="Enter your email, bro" required>
+            <button type="submit" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Subscribe
+            </button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>BROFESSIONAL</h4>
+                <p style="opacity: 0.7; line-height: 1.8;">Keep it pro. Keep it bro. The lifestyle brand for modern professionals who never forget their roots.</p>
+            </div>
+            <div class="footer-section">
+                <h4>QUICK LINKS</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#" onclick="showEasterEgg('shop'); return false;">Shop</a></li>
+                    <li><a href="#" onclick="showEasterEgg('about'); return false;">About Us</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>SUPPORT</h4>
+                <ul>
+                    <li><a href="mailto:brofessional@remotebb.com">Contact Us</a></li>
+                    <li><a href="#" onclick="showEasterEgg('shipping'); return false;">Shipping Info</a></li>
+                    <li><a href="#" onclick="showEasterEgg('returns'); return false;">Returns</a></li>
+                    <li><a href="#" onclick="showEasterEgg('size'); return false;">Size Guide</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>CONNECT</h4>
+                <div class="social-links">
+                    <a href="#" onclick="showEasterEgg('instagram'); return false;"><i class="fab fa-instagram"></i></a>
+                    <a href="#" onclick="showEasterEgg('twitter'); return false;"><i class="fab fa-twitter"></i></a>
+                    <a href="#" onclick="showEasterEgg('facebook'); return false;"><i class="fab fa-facebook"></i></a>
+                    <a href="#" onclick="showEasterEgg('tiktok'); return false;"><i class="fab fa-tiktok"></i></a>
+                </div>
+                <p style="margin-top: 1rem; opacity: 0.7;">
+                    <i class="fas fa-envelope"></i> brofessional@remotebb.com
+                </p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Brofessional. All rights reserved. Keep it pro. Keep it bro.</p>
+        </div>
+    </footer>
+
+    <!-- Easter Egg Modal -->
+    <div class="easter-modal" id="easterModal">
+        <div class="easter-content">
+            <button class="close-btn" onclick="closeEasterEgg()">&times;</button>
+            <div class="emoji" id="easterEmoji"></div>
+            <h3 id="easterTitle"></h3>
+            <div id="easterBody"></div>
+            <button class="btn-gold" onclick="closeEasterEgg()" id="easterBtn">Got it, bro</button>
+        </div>
+    </div>
+
+    <script>
+        // Easter Egg Content
+        const easterEggs = {
+            size: {
+                emoji: '📏',
+                title: 'BRO SIZE GUIDE',
+                body: `<div class="size-chart">
+                    <table>
+                        <tr><th>Vibe</th><th>Actual Size</th><th>Bro Translation</th></tr>
+                        <tr><td>Smol Bro</td><td>S</td><td>You lift, but like, spiritually</td></tr>
+                        <tr><td>Regular Bro</td><td>M</td><td>Balanced, as all bros should be</td></tr>
+                        <tr><td>Large Bro</td><td>L</td><td>You've been eating your protein</td></tr>
+                        <tr><td>XL Bro</td><td>XL</td><td>Absolute unit energy</td></tr>
+                        <tr><td>XXL Bro</td><td>XXL</td><td>You ARE the gym</td></tr>
+                    </table>
+                </div>
+                <p style="font-size: 0.85rem; opacity: 0.7;">Real talk: It's a standard unisex fit. Check Amazon for actual measurements. We believe in you.</p>`,
+                btn: 'Thanks bro'
+            },
+            shipping: {
+                emoji: '🚀',
+                title: 'SHIPPING INFO',
+                body: `<p>It's on Amazon, bro.</p>
+                <p style="margin-top: 1rem;">Prime = fast.<br>No Prime = still pretty fast.<br>Either way, your brofessional journey begins soon.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">We literally just make the shirt. Bezos handles the rest.</p>`,
+                btn: 'Fair enough'
+            },
+            returns: {
+                emoji: '🔄',
+                title: 'RETURNS',
+                body: `<p>Amazon handles all returns, bro.</p>
+                <p style="margin-top: 1rem;">But real talk... why would you return this masterpiece?</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">If you do need to return it, just do the normal Amazon return thing. We won't take it personally. (We will.)</p>`,
+                btn: 'I would never return it'
+            },
+            shop: {
+                emoji: '🛒',
+                title: 'THE SHOP',
+                body: `<p>Bro, you're looking at it.</p>
+                <p style="margin-top: 1rem;">We have one shirt. It's perfect. What more do you need?</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">Okay fine, more designs are coming. But for now, scroll up and get THE shirt.</p>`,
+                btn: 'You right'
+            },
+            about: {
+                emoji: '🤝',
+                title: 'ABOUT US',
+                body: `<p>We're just some bros who wanted to be professional but also stay bro.</p>
+                <p style="margin-top: 1rem;">So we made a shirt about it.</p>
+                <p style="margin-top: 1rem;">That's it. That's the whole story.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">Keep it pro. Keep it bro. Forever.</p>`,
+                btn: 'Beautiful'
+            },
+            instagram: {
+                emoji: '📸',
+                title: 'INSTAGRAM',
+                body: `<p>We don't have an Instagram yet.</p>
+                <p style="margin-top: 1rem;">We're too busy being brofessional.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">But if you post yourself in the shirt, that's basically our Instagram. Tag us when we exist.</p>`,
+                btn: 'Understandable'
+            },
+            twitter: {
+                emoji: '🐦',
+                title: 'TWITTER / X',
+                body: `<p>We're not on Twitter.</p>
+                <p style="margin-top: 1rem;">Or X. Or whatever it's called now.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">We're too busy touching grass and being brofessional IRL.</p>`,
+                btn: 'Respect'
+            },
+            facebook: {
+                emoji: '👴',
+                title: 'FACEBOOK',
+                body: `<p>Facebook? Really bro?</p>
+                <p style="margin-top: 1rem;">Your dad might be on there but we're not.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">Tell your uncle we said hi though.</p>`,
+                btn: 'Lmao okay'
+            },
+            tiktok: {
+                emoji: '🎵',
+                title: 'TIKTOK',
+                body: `<p>No TikTok yet.</p>
+                <p style="margin-top: 1rem;">We tried to make one but we kept getting distracted watching other TikToks.</p>
+                <p style="font-size: 0.85rem; opacity: 0.7; margin-top: 1rem;">If you make a brofessional TikTok, you're officially our marketing department.</p>`,
+                btn: 'I might actually'
+            }
+        };
+
+        function showEasterEgg(type) {
+            const egg = easterEggs[type];
+            if (!egg) return;
+
+            document.getElementById('easterEmoji').textContent = egg.emoji;
+            document.getElementById('easterTitle').textContent = egg.title;
+            document.getElementById('easterBody').innerHTML = egg.body;
+            document.getElementById('easterBtn').textContent = egg.btn;
+            document.getElementById('easterModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeEasterEgg() {
+            document.getElementById('easterModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        // Close modal on outside click
+        document.getElementById('easterModal').addEventListener('click', function(e) {
+            if (e.target === this) closeEasterEgg();
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeEasterEgg();
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Navbar scroll effect
+        const nav = document.getElementById('nav');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const fadeElements = document.querySelectorAll('.fade-in');
+
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        fadeElements.forEach(element => {
+            observer.observe(element);
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                    // Close mobile menu if open
+                    navLinks.classList.remove('active');
+                    const icon = mobileMenuBtn.querySelector('i');
+                    icon.classList.add('fa-bars');
+                    icon.classList.remove('fa-times');
+                }
+            });
+        });
+
+        // Add some parallax to hero
+        window.addEventListener('scroll', () => {
+            const hero = document.querySelector('.hero-content');
+            const scrolled = window.scrollY;
+            if (hero && scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * 0.3}px)`;
+                hero.style.opacity = 1 - (scrolled / window.innerHeight);
+            }
+        });
+    </script>
+</body>
+</html>
